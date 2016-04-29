@@ -4,14 +4,15 @@
 	<meta charset="utf-8">
 	<title>Welcome to :: Nwasco Dashboard</title>
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,500,700,300' rel='stylesheet' type='text/css'>
-    <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>css/dataTables.bootstrap.css" rel="stylesheet"> 
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/font-awesome.min.css"> 
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/grid.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>css/dataTables.bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
 	<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.2.3.pack.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.idTabs.min.js"></script> 
-	
+  <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.idTabs.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/draggabilly/2.1.0/draggabilly.pkgd.min.js"></script>
+  <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.7.0/jquery.modal.min.js"></script>
+
     </head>
     <body>
 	<div class="wrapper">
@@ -26,7 +27,7 @@
  
                <ul class="pull-right">
                    <li>Welcome <a href="#"><strong><?php echo $fname;?></strong> <i class="fa fa-gear"></i></a></li>
-                   <li><a href="home/logout">Logout <i class="fa fa-power-off"></i></a></li> 
+                   <li><a href="<?php echo base_url(); ?>home/logout">Logout <i class="fa fa-power-off"></i></a></li> 
                    <li><strong>Administrator</strong></li> 
                </ul>
 

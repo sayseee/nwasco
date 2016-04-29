@@ -49,14 +49,22 @@ function getTowns(){
   $query = $this->db->get();
   return $query->result();
 }
-    
+
 function getDirective(){
   $this->db->select("*");
   $this->db->from('directive_cats');
-   
+
   $query = $this->db->get();
   return $query->result();
 }
-  
- 
+
+public function send_mail() {
+    $this->load->library( 'email' );
+    $this->email->from( 'jdoe@gmail.com', 'John Doe' );
+    $this->email->to( 'jane_doe@gmail.com' );
+    $this->email->subject( 'Some subject' );
+    $this->email->message( $this->load->view( 'emails/message', $data, true ) );
+    $this->email->send();
+}
+
 }

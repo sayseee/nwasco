@@ -7,20 +7,18 @@ class Main extends CI_Controller {
     {
         // this is your constructor
         parent::__construct();
-        $this->load->helper('form');  
-	$this->load->model('core'); // load model  
-	$this->load->model('towns'); // load model  
+        $this->load->helper('form');
+	$this->load->model('core'); // load model
+	$this->load->model('towns'); // load model
     }
-    
  function index()
- { 
-   
+ {
    if($this->session->userdata('logged_in'))
    {
      $session_data = $this->session->userdata('logged_in');
      $data['fname'] = $session_data['fname'];
      $data['lname'] = $session_data['lname'];
-     $data['level'] = $session_data['level']; 
+     $data['level'] = $session_data['level'];
    }
    else
    {
@@ -36,10 +34,11 @@ class Main extends CI_Controller {
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('username');
         $this->session->sess_destroy();
- 
         // Set Message
         $this->session->set_flashdata('logged_out','You have been Logged Out');
-        redirect('login');
+        $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
+        $this->output->set_header("Pragma: no-cache");
+        redirect('login', 'refresh');
  }
 
-} 
+}
