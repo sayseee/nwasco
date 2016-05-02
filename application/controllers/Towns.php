@@ -13,13 +13,4 @@ public function index() {
    $this->load->view('sidebar-right', $this->data); // load the view file , we are passing $data array to view file
 }
 
-function listsTowns($id)
-    {
-        $this->db->select('*');
-        $this->db->from('towns'); 
-        $this->db->where('utility_id',$id);
-        $this->db->order_by('town','asc');
-        $query = $this->db->get();
-        return $query->result_array();
-    }
 } 

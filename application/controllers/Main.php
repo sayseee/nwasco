@@ -8,8 +8,8 @@ class Main extends CI_Controller {
         // this is your constructor
         parent::__construct();
         $this->load->helper('form');
-	$this->load->model('core'); // load model
-	$this->load->model('towns'); // load model
+    	$this->load->model('core'); // load model
+    	$this->load->model('towns'); // load model
     }
  function index()
  {

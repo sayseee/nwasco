@@ -7,7 +7,6 @@ class Utilities extends CI_Controller {
     {
         // this is your constructor
         parent::__construct();
-        $this->load->helper('form');
         $this->load->model('core'); // load model
         $this->load->model('towns'); // load model
         $this->load->model('utilities_model'); // load model
@@ -21,37 +20,37 @@ class Utilities extends CI_Controller {
     {
         // Get data from model
         $data['utilities'] = $this->utility->getAll();
- 
+
     }
 
     public function details($id)//single post page
-    {    
-        $data['utilities'] = $this->utilities_model->getUtilities();
+    { 
+        $data['utilities']  = $this->utilities_model->getUtilities();
         $data['directives'] = $this->utilities_model->listDirectives($id);
-        $data['projects'] = $this->utilities_model->listProjects($id);
-        $data['tariffs'] = $this->utilities_model->listTarrifs($id);
-        $data['cunits'] = $this->utilities_model->getById($id); 
+        $data['projects']   = $this->utilities_model->listProjects($id);
+        $data['tariffs']    = $this->utilities_model->listTarrifs($id);
+        $data['licence']    = $this->utilities_model->listLcondtions($id);
+        $data['cunits']     = $this->utilities_model->getById($id); 
          if($this->session->userdata('logged_in'))
-   {
-     $session_data = $this->session->userdata('logged_in');
-     $data['fname'] = $session_data['fname'];
-     $data['lname'] = $session_data['lname'];
-     $data['level'] = $session_data['level']; 
-     $cudata = $this->utilities_model->getById($id); 
-     $data['utility'] = $cudata['utility'];
-     $this->load->view('header', $data);
-     $this->load->view('sidebar-left', $data);
-       $this->load->view('templates/view_utility', $data);
-     $this->load->view('sidebar-right', $data);
-     $this->load->view('footer', $data);
-   }
-   else
-   {
-     //If no session, redirect to login page
-     redirect('login');
-   }
- }
-
+       {
+         $session_data  = $this->session->userdata('logged_in');
+         $data['fname'] = $session_data['fname'];
+         $data['lname'] = $session_data['lname'];
+         $data['level'] = $session_data['level']; 
+         $cudata = $this->utilities_model->getById($id); 
+         $data['utility'] = $cudata['utility'];
+         $this->load->view('header', $data);
+         $this->load->view('sidebar-left', $data);
+           $this->load->view('templates/view_utility', $data);
+         $this->load->view('sidebar-right', $data);
+         $this->load->view('footer', $data);
+       }
+       else
+       {
+         //If no session, redirect to login page
+         redirect('login');
+       }
+    }
 
 
 
@@ -70,18 +69,18 @@ class Utilities extends CI_Controller {
             }
         }
 
-        // Load helpers
-        $this->load->helper('form');
+            // Load helpers
+            $this->load->helper('form');
 
-        // Initialize form
-        $data['action'] = site_url('blog/create');
-        $data['title'] = NULL;
-        $data['content'] = NULL;
+            // Initialize form
+            $data['action'] = site_url('blog/create');
+            $data['title'] = NULL;
+            $data['content'] = NULL;
 
-        // Load views
-        $this->load->view('header');
-        $this->load->view('upsert', $data);
-        $this->load->view('footer');
+            // Load views
+            $this->load->view('header');
+            $this->load->view('upsert', $data);
+            $this->load->view('footer');
     }
 
     public function update()
@@ -100,28 +99,28 @@ class Utilities extends CI_Controller {
             }
         }
 
-        // Get utility from database
-        $id = $this->uri->segment(3);
-        $utility = $this->utility->getById($id);
+            // Get utility from database
+            $id = $this->uri->segment(3);
+            $utility = $this->utility->getById($id);
 
-        // Initialize form
-        $this->load->helper('form');
-        $data['action'] = site_url('blog/update/'.$id);
-        $data['title'] = $utility->title;
-        $data['content'] = $utility->content;
+            // Initialize form
+            $this->load->helper('form');
+            $data['action'] = site_url('blog/update/'.$id);
+            $data['title'] = $utility->title;
+            $data['content'] = $utility->content;
 
-        // Load views
-        $this->load->view('header');
-        $this->load->view('upsert', $data);
-        $this->load->view('footer');
+            // Load views
+            $this->load->view('header');
+            $this->load->view('upsert', $data);
+            $this->load->view('footer');
     }
 
     public function delete()
     {
-        $utility = new utility_model();
-        $utility->id = $this->uri->segment(3);
-        if ($utility->delete()) {
-            redirect(base_url(), 'location');
-        }
+            $utility = new utility_model();
+            $utility->id = $this->uri->segment(3);
+            if ($utility->delete()) {
+                redirect(base_url(), 'location');
+            }
     }
 }

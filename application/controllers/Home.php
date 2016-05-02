@@ -9,6 +9,7 @@ class Home extends CI_Controller {
         parent::__construct();
         $this->load->helper('form');
 	$this->load->model('core'); // load model
+  $this->load->model('towns'); // load model
   $this->load->model('utilities_model'); // load model
   $this->load->model('directives_model'); // load model
   $this->load->model('licences_model'); // load model
@@ -18,11 +19,7 @@ class Home extends CI_Controller {
  function index()
  {
 
-  $query = $this->utilities_model->getUtilities();
-  $data['utilities'] = null;
-  if($query){
-   $data['utilities'] =  $query;
-  }
+ $data['utilities']  = $this->utilities_model->getUtilities();
    if($this->session->userdata('logged_in'))
    {
      $session_data = $this->session->userdata('logged_in');

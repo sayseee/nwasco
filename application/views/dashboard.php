@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             if($level == "1")
             {
             ?>
-            <article>
-        <div class="col-md-8 scroll" id="content">
+        <article class="col-md-8" id="main" >
+        <div class="col-md-12 scroll" id="content"> 
         <div id="crumbs">Dashboard <i class="fa fa-chevron-right"></i> Overview</div>
             <div class="row">
 				<div class="col-md-12" id="c__u">
@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						  <li><?php echo $project['project'] ?></li>
 						<?php endforeach; ?>
 						</ul>
-					<span class="pull-right info">
+					<span class="pull-right btn btn-info">
 					 <?php
                     $url = str_replace(' ','-',$utility['utility']);
                     $url = str_replace(":",'',$url);

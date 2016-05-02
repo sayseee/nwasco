@@ -3,13 +3,12 @@
 //we need to call PHP's session object to access it through CI
 
 class Utilities_model extends CI_Model {
- 
+
    public function __construct()
     {
         parent::__construct();
     }
- 
- 
+
     public function getAll()
     {
         $query = $this->db->get('cunits');
@@ -26,33 +25,33 @@ class Utilities_model extends CI_Model {
   }
 }
 
-    private function insert($post) 
+    private function insert($post)
     {
         return $this->db->insert('cunits', $this);
     }
-     
-    private function update($post) 
+
+    private function update($post)
     {
         $this->db->set('title', $this->title);
         $this->db->set('content', $this->content);
         $this->db->where('id', $this->id);
         return $this->db->update('post');
     }
- 
-    public function delete() 
+
+    public function delete()
     {
         $this->db->where('id', $this->id);
         return $this->db->delete('post');
     }
-     
-    public function save() 
+
+    public function save()
     {
-        if (isset($this->id)) {  
+        if (isset($this->id)) {
             return $this->update();
         } else {
             return $this->insert();
         }
-    } 
+    }
 
     function getTowns($cu_id = false)
     {
@@ -72,63 +71,56 @@ class Utilities_model extends CI_Model {
         return $result;
       }
     }
+//List Licence Conditions for Commercial Utilities Details Page
+   public function listUtilities($cu_id = false) {
+      $query = $this->db->get_where('cunits', array('cu_id' => $cu_id));
 
-    public function listTowns($id) {  
-      $this->db->select('*');
-        $this->db->from('towns'); 
-        $this->db->where('utility_id',$id);
-        $this->db->order_by('town','asc');
-        $query = $this->db->get();
-        return $query->result_array();
-    }
+      return $query->result_array();
+}
+//List Licence Conditions for Commercial Utilities Details Page
+   public function listLcondtions($id) {
+      $query = $this->db->get_where('licence_conditions', array('utility_id' => $id));
 
+      return $query->result_array();
+}
 //List Directives for Commercial Utilities Details Page
-    public function listDirectives($id) {  
-      $this->db->select('*');
-        $this->db->from('directives'); 
-        $this->db->where('utility_id',$id);
-        $this->db->order_by('directive','asc');
-        $query = $this->db->get();
+    public function listTowns($id) {
+        $query = $this->db->get_where('towns', array('utility_id' => $id));
+
         return $query->result_array();
-    }
- 
+  }
+//List Directives for Commercial Utilities Details Page
+   public function listDirectives($id) {
+        $query = $this->db->get_where('directives', array('utility_id' => $id));
+
+        return $query->result_array();
+  }
 //List Projects for Commercial Utilities Details Page
-//
-    public function listTarrifs($id) {  
-      $this->db->select('*');
-        $this->db->from('tariff_conditions'); 
-        $this->db->where('utility_id',$id);
-        $this->db->order_by('tariff_id','asc');
-        $query = $this->db->get();
-        return $query->result_array();
+    public function listTarrifs($id) {
+        $query = $this->db->get_where('tariff_conditions', array('utility_id' => $id));
+
+      return $query->result_array();
+    }
+//List Projects for Commercial Utilities Details Page
+    public function listProjects($id) {
+        $query = $this->db->get_where('projects', array('utility_id' => $id));
+
+      return $query->result_array();
     }
 
- 
-//List Projects for Commercial Utilities Details Page
-//
-    public function listProjects($id) {  
-      $this->db->select('*');
-        $this->db->from('projects'); 
-        $this->db->where('utility_id',$id);
-        $this->db->order_by('project','asc');
-        $query = $this->db->get();
-        return $query->result_array();
-    }
 
     public function getUtilities()
     {
-      $this->db->select('cu_id, utility');
-      $this->db->order_by('utility', 'ASC');
-      $query = $this->db->get('cunits');
+        $this->db->order_by('utility', 'ASC');
+        $query = $this->db->get('cunits');
 
-      if($query->result() == TRUE)
-      {
-        foreach($query->result_array() as $row)
+        if($query->result() == TRUE)
         {
-          $result[] = $row;
+          foreach($query->result_array() as $row)
+          {
+            $result[] = $row;
+          }
+          return $result;
         }
-        return $result;
-      }
     }
- 
 }
