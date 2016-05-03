@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	  	<div id="tab-2" class="tab-content">
 		  <ul class="cu_details">
 			<h5 class="c__list">Tarrif Conditions</h5>
-			 <table id="myTable" class="cu_details sortable-theme-bootstrap nowrap" data-sortable>
+			 <table id="table" class="display" cellspacing="0" width="100%">
  			<?php       //if there is comments then print the comments
 			 if(!empty($tariffs)) {
                 	?>

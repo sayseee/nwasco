@@ -22,26 +22,7 @@ function login($email, $password)
  }
     
 
-function add_users()
-{
-    $this->db->insert('users', $data); 
-    $return;
-}
 
-function update_users()
-{
-    $this->db->where('user_id', 1);
-    $this->db->update('users', $data);
-
-}
-
-function delete_users()
-{
-    $this->db->where('user_id', $this->url->segment(3));
-    $this->db->delete('users');
-
-}
-     
 function getTowns(){
   $this->db->select("*");
   $this->db->from('towns');

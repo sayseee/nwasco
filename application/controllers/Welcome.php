@@ -10,8 +10,9 @@ class Main extends CI_Controller
 
 	public function index()
     {
-        $this->load->view('welcome_page.php');
-        $this->load->view('dashboard.php');
-        $this->load->view('footer.php');
+        $this->load->view('header');
+        $this->load->view('sidebar');
+        $this->load->view('the-content page');
+        $this->load->view('footer');
     }
 }

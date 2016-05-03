@@ -27,7 +27,7 @@
 				                    {
 
 				                 ?>
-				         <li class="<?php echo active_link('utilities/details'); ?>"><a href="<?php
+				         <li class="<?=($this->uri->segment(1)==='beta')?'active':''?>"><a href="<?php
 
 				         $url = str_replace(' ','-',$utility['utility']);
 					     $url = str_replace(":",'',$url);
