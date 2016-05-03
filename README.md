@@ -3,7 +3,7 @@ National Water and Sanitation Council - Zambia
 
 ##Installation
 Just upload/copy the files from this package to the web root directory/folder in your
-server.  For example, copy nwasco to www/nwasco for WAMP OR httdocs/applicationfolder for XAMP or http://www.nwasco.com/applicationfolder FOR online web server
+server.  For example, copy nwasco to www/nwasco for WAMP OR httdocs/applicationfolder for XAMP or http://www.example.com/applicationfolder FOR online web server
 
 ##Running
 ###Localhost: 
