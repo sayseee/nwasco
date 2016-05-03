@@ -40,15 +40,14 @@ class Home extends CI_Controller {
  }
 
  function logout()
- {
-   // Unset User Data
-        $this->session->unset_userdata('logged_in');
-        $this->session->unset_userdata('user_id');
-        $this->session->unset_userdata('username');
-        $this->session->sess_destroy();
-
-        // Set Message
-        $this->session->set_flashdata('logged_out','You have been Logged Out');
+{
+    $session_data = $this->session->userdata();
+        foreach ($userdata as $key => $value) {
+            if ($key != 'id' && $key != 'ip_address' && $key != 'timestamp' && $key != 'data') {
+                $this->session->unset_userdata($key);
+            }
+        }
+    $this->session->sess_destroy();
         redirect('login');
  }
 
